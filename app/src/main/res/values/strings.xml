@@ -1,0 +1,16 @@
+<resources>
+    <!-- app -->
+    <string name="app_name">Image Finder</string>
+    <!-- navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_artists">Artists</string>
+    <!-- general -->
+    <string name="general_search">Search</string>
+    <string name="general_save">Save</string>
+    <!-- home -->
+    <!-- favorites -->
+    <!-- artists -->
+    <string name="artists_photos">Photos</string>
+    <string name="artists_likes">Likes</string>
+</resources>
