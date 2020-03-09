@@ -7,3 +7,13 @@ Iapp/src/main/java/com/uhnux/picturefinder/ui/artists/ArtistsFragment.java,9/a/
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+~
+Napp/src/main/java/com/uhnux/picturefinder/ui/favorites/FavoritesViewModel.java,c/e/ce2c8d733c37da3206ff32b419f0b7d53bb369d7
+t
+Dapp/src/main/java/com/uhnux/picturefinder/ui/home/HomeViewModel.java,2/5/25a23548c1df926e19b75e629d0bd4392d05b41c
+s
+Capp/src/main/java/com/uhnux/picturefinder/ui/home/HomeFragment.java,2/4/24fcb47a3686d2bd8388d85f2d3789cda69fef5c
+}
+Mapp/src/main/java/com/uhnux/picturefinder/ui/favorites/FavoritesFragment.java,3/9/3917a61a35407c6a90649951594db2e95707f4f1
+k
+;app/src/main/java/com/uhnux/picturefinder/MainActivity.java,7/f/7f94a46543a61552c373b3b8c8254c7e2b06512b
