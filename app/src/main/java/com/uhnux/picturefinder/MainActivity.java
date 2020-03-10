@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.uhnux.picturefinder.ui.artists.ArtistsFragment;
 import com.uhnux.picturefinder.ui.favorites.FavoritesFragment;
 import com.uhnux.picturefinder.ui.home.HomeFragment;
+import com.uhnux.picturefinder.util.GeneralControl;
 import com.uhnux.picturefinder.util.ProgressDialog;
 
 import androidx.annotation.NonNull;
@@ -30,36 +31,37 @@ public class MainActivity extends AppCompatActivity implements MainView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                FragmentManager manager = getSupportFragmentManager();
-                switch (item.getItemId()) {
-                    case R.id.bnm_navigation_home:
-                        Toast.makeText(MainActivity.this, "Recents", Toast.LENGTH_SHORT).show();
-                        manager.beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
-                        break;
-                    case R.id.bnm_navigation_artists:
-                        Toast.makeText(MainActivity.this, "Favorites", Toast.LENGTH_SHORT).show();
-                        manager.beginTransaction().replace(R.id.nav_host_fragment, new ArtistsFragment()).commit();
-                        break;
-                    case R.id.bnm_navigation_favorites:
-                        Toast.makeText(MainActivity.this, "Nearby", Toast.LENGTH_SHORT).show();
-                        manager.beginTransaction().replace(R.id.nav_host_fragment, new FavoritesFragment()).commit();
-                        break;
-                }
-                return true;
-            }
-        });
+//        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                FragmentManager manager = getSupportFragmentManager();
+//                switch (item.getItemId()) {
+//                    case R.id.bnm_navigation_home:
+//                        Toast.makeText(MainActivity.this, R.string.nav_home, Toast.LENGTH_SHORT).show();
+//                        manager.beginTransaction().replace(R.id.nav_host_fragment, new HomeFragment()).commit();
+//                        break;
+//                    case R.id.bnm_navigation_artists:
+//                        Toast.makeText(MainActivity.this, R.string.nav_artists, Toast.LENGTH_SHORT).show();
+//                        manager.beginTransaction().replace(R.id.nav_host_fragment, new ArtistsFragment()).commit();
+//                        break;
+//                    case R.id.bnm_navigation_favorites:
+//                        Toast.makeText(MainActivity.this, R.string.nav_favorites, Toast.LENGTH_SHORT).show();
+//                        manager.beginTransaction().replace(R.id.nav_host_fragment, new FavoritesFragment()).commit();
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
         progressDialog = new ProgressDialog(this, getLayoutInflater());
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.bnm_navigation_home, R.id.bnm_navigation_artists, R.id.bnm_navigation_favorites)
                 .build();
-        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        //NavigationUI.setupWithNavController(navView, navController);
+        NavigationUI.setupWithNavController(navView, navController);
+        GeneralControl.getInstance().setActivity(this);
     }
 
     @Override

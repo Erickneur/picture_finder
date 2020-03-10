@@ -78,6 +78,10 @@ public class PhotoItemAdapter extends RecyclerView.Adapter<PhotoItemAdapter.Phot
 
     @Override
     public int getItemCount() {
-        return photoList.size();
+        if(photoList != null)
+            return photoList.size();
+        else{
+            return 0;
+        }
     }
 }
