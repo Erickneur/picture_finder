@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -24,6 +23,7 @@ import com.uhnux.picturefinder.data.api.UnsplashClient;
 import com.uhnux.picturefinder.data.models.Photo;
 import com.uhnux.picturefinder.data.models.SearchResults;
 import com.uhnux.picturefinder.data.api.UnsplashInterface;
+import com.uhnux.picturefinder.ui.artists.ArtistsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import retrofit2.Callback;
 
 public class HomeFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    //private HomeViewModel homeViewModel;
     private SearchView searchView;
     private RecyclerView rvPhotos;
     private SwipeRefreshLayout refreshGesture;
@@ -44,12 +44,12 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
+        //homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.fh_tv_home);
         searchView = root.findViewById(R.id.fh_sb_finder);
         rvPhotos = root.findViewById(R.id.fh_rv_photos);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         rvPhotos.setLayoutManager(layoutManager);
         adapter = new PhotoItemAdapter(new ArrayList<Photo>(), getContext());
         rvPhotos.setAdapter(adapter);
@@ -62,9 +62,9 @@ public class HomeFragment extends Fragment {
                 if(searchView.getQuery() != null && !searchView.getQuery().toString().equals("")){
                     search(searchView.getQuery().toString());
                 }else{
-                    resetPhotos();
+                    ((MainActivity) getActivity()).pushView(new ArtistsFragment());
+                    //resetPhotos();
                 }
-                //refreshGesture.setRefreshing(false);
             }
         });
         refreshGesture.setColorSchemeResources(R.color.colorPrimary,
@@ -91,12 +91,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        homeViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        homeViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +118,7 @@ public class HomeFragment extends Fragment {
         });
 
         dataService = UnsplashClient.getUnsplashClient().create(UnsplashInterface.class);
+
         resetPhotos();
         return root;
     }

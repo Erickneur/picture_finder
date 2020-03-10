@@ -18,7 +18,9 @@ import retrofit2.Callback;
 
 public class HomeViewModel extends ViewModel {
 
-    private int page = 1;
+    private UnsplashInterface dataService;
+    private int page;
+    private Boolean loading;
     private MutableLiveData<String> mText;
     private MutableLiveData<List<Photo>> photos;
 
@@ -26,26 +28,49 @@ public class HomeViewModel extends ViewModel {
         mText = new MutableLiveData<>();
         photos = new MutableLiveData<>();
         mText.setValue("This is home fragment");
+        dataService = UnsplashClient.getUnsplashClient().create(UnsplashInterface.class);
+        loading = false;
+        page = 1;
     }
 
     public LiveData<String> getText() {
         return mText;
     }
 
-    public LiveData<List<Photo>> getPhotos(){
-        UnsplashInterface dataService = UnsplashClient.getUnsplashClient().create(UnsplashInterface.class);
+    public LiveData<List<Photo>> resetPhotos(){
         dataService.getPhotos(page,null,"latest")
                 .enqueue(new Callback<List<Photo>>() {
                     @Override
                     public void onResponse(retrofit2.Call<List<Photo>> call, retrofit2.Response<List<Photo>> response) {
-                        List<Photo> photos = response.body();
-                        Log.d("Photos", "Photos Fetched " + photos.size());
+                        photos.setValue(response.body());
+                        Log.d("Photos", "Photos Fetched " + photos.getValue().size());
                         //add to adapter
                         page = 1;
                     }
 
                     @Override
                     public void onFailure(retrofit2.Call<List<Photo>> call, Throwable t) {
+                    }
+                });
+        return photos;
+    }
+
+    public LiveData<List<Photo>> loadPhotos(){
+        loading = true;
+        dataService.getPhotos(page,null,"latest")
+                .enqueue(new Callback<List<Photo>>() {
+                    @Override
+                    public void onResponse(retrofit2.Call<List<Photo>> call, retrofit2.Response<List<Photo>> response) {
+                        List<Photo> newPhotos = response.body();
+                        photos.getValue().addAll(newPhotos);
+                        Log.d("Photos", "Photos Fetched " + photos.getValue().size());
+                        page++;
+                        loading = false;
+                    }
+
+                    @Override
+                    public void onFailure(retrofit2.Call<List<Photo>> call, Throwable t) {
+                        loading = false;
                     }
                 });
         return photos;

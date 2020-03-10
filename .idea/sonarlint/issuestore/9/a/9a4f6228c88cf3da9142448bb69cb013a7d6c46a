@@ -1,5 +1,11 @@
 
 T
 java:S1172"9Remove this unused method parameter "savedInstanceState".(©ó‘ãøÿÿÿÿ
-t
-java:S1450"_Remove the "artistsViewModel" field and declare it as a local variable in the relevant methods.(­€Í0
+^
+java:S1854"<Remove this useless assignment to local variable "textView".(ÔÀ øÿÿÿÿ8ü‘â™Œ.
+O
+java:S1481"-Remove this unused "textView" local variable.(ÔÀ øÿÿÿÿ8ü‘â™Œ.
+X	java:S125"<This block of commented-out lines of code should be removed.(‹¯ÎÕ8ü‘â™Œ.
+X	java:S125"<This block of commented-out lines of code should be removed.(¬à¥8ü‘â™Œ.
+X	java:S125"<This block of commented-out lines of code should be removed.(ÜÐÎÕ8ü‘â™Œ.
+]	java:S125"<This block of commented-out lines of code should be removed.(ŒÝÄ¹ÿÿÿÿÿ8ü‘â™Œ.

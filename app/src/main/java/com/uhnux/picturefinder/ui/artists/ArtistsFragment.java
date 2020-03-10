@@ -16,20 +16,19 @@ import com.uhnux.picturefinder.R;
 
 public class ArtistsFragment extends Fragment {
 
-    private ArtistsViewModel artistsViewModel;
+    //private ArtistsViewModel artistsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        artistsViewModel =
-                ViewModelProviders.of(this).get(ArtistsViewModel.class);
+        //artistsViewModel = ViewModelProviders.of(this).get(ArtistsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_artists, container, false);
         final TextView textView = root.findViewById(R.id.fa_tv_artists);
-        artistsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        artistsViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
 }

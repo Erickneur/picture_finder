@@ -17,3 +17,7 @@ Capp/src/main/java/com/uhnux/picturefinder/ui/home/HomeFragment.java,2/4/24fcb4
 Mapp/src/main/java/com/uhnux/picturefinder/ui/favorites/FavoritesFragment.java,3/9/3917a61a35407c6a90649951594db2e95707f4f1
 k
 ;app/src/main/java/com/uhnux/picturefinder/MainActivity.java,7/f/7f94a46543a61552c373b3b8c8254c7e2b06512b
+p
+@app/src/main/java/com/uhnux/picturefinder/data/models/Photo.java,d/5/d5bedf37df699d9ca4e8bf53b7ace9738195cd73
+w
+Gapp/src/main/java/com/uhnux/picturefinder/ui/home/PhotoItemAdapter.java,8/b/8bd93510bc60bdeee433d76be5d498a3ec179a63
