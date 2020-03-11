@@ -52,7 +52,7 @@ public class HomeViewModel extends ViewModel {
                         photos.setValue(response.body());
                         Log.d("Photos", "Photos Fetched " + photos.getValue().size());
                         //add to adapter
-                        page = 1;
+                        page = 2;
                         loading = false;
                         GeneralControl.getInstance().showProgress(false);
                     }
@@ -72,9 +72,8 @@ public class HomeViewModel extends ViewModel {
         dataService.getPhotos(page,null,"latest")
                 .enqueue(new Callback<List<Photo>>() {
                     @Override
-                    public void onResponse(retrofit2.Call<List<Photo>> call, retrofit2.Response<List<Photo>> response) {
-                        List<Photo> newPhotos = response.body();
-                        photos.getValue().addAll(newPhotos);
+                    public void onResponse(retrofit2.Call<List<Photo>> call, retrofit2.Response<List<Photo>> response) { ;
+                        photos.setValue(response.body());
                         Log.d("Photos", "Photos Fetched " + photos.getValue().size());
                         page++;
                         loading = false;
@@ -92,6 +91,7 @@ public class HomeViewModel extends ViewModel {
 
     public LiveData<List<Photo>> search(String query){
         loading = true;
+        page = 1;
         if(query != null && !query.equals("")) {
             GeneralControl.getInstance().showProgress(true);
             dataService.searchPhotos(query,null,null,null)

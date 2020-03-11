@@ -10,6 +10,12 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/ii_iv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,19 +33,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_action_like"
+                android:layout_marginRight="8dp" />
+
+            <TextView
+                android:id="@+id/ii_tv_likes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_action_favorites"
+                android:backgroundTint="@color/colorFavorite"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_action_info"
+                android:layout_marginRight="8dp"/>
 
             <TextView
                 android:id="@+id/ii_tv_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/ii_tv_likes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp" />
+                android:textSize="16dp" />
 
         </LinearLayout>
 

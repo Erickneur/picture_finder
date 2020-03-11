@@ -5,19 +5,70 @@ import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("raw")
+    @SerializedName("username")
     @Expose
-    private String raw;
-    @SerializedName("full")
+    private String username;
+    @SerializedName("twitter_username")
     @Expose
-    private String full;
-    @SerializedName("regular")
+    private String twitter;
+    @SerializedName("bio")
     @Expose
-    private String regular;
-    @SerializedName("small")
+    private String bio;
+    @SerializedName("links")
     @Expose
-    private String small;
-    @SerializedName("thumb")
+    private Links links;
+    @SerializedName("profile_image")
     @Expose
-    private String thumb;
+    private Urls urls;
+    @SerializedName("total_likes")
+    @Expose
+    private String likes;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getTwitter() {
+        return twitter;
+    }
+
+    public void setTwitter(String twitter) {
+        this.twitter = twitter;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public Links getLinks() {
+        return links;
+    }
+
+    public void setLinks(Links links) {
+        this.links = links;
+    }
+
+    public Urls getUrls() {
+        return urls;
+    }
+
+    public void setUrls(Urls urls) {
+        this.urls = urls;
+    }
+
+    public String getLikes() {
+        return likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
+    }
 }

@@ -9,10 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
-import com.uhnux.picturefinder.MainActivity;
 import com.uhnux.picturefinder.R;
 import com.uhnux.picturefinder.data.models.Photo;
 
@@ -29,11 +27,12 @@ public class PhotoItemAdapter extends RecyclerView.Adapter<PhotoItemAdapter.Phot
     }
 
     public class PhotoItemHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
+        public ImageView ivPhoto, ivUser;
         public TextView tvDescription, tvLikes;
         public PhotoItemHolder(View view) {
             super(view);
-            imageView = view.findViewById(R.id.ii_siv_image);
+            ivUser = view.findViewById(R.id.ii_iv_user);
+            ivPhoto = view.findViewById(R.id.ii_siv_image);
             tvDescription = view.findViewById(R.id.ii_tv_description);
             tvLikes = view.findViewById(R.id.ii_tv_likes);
         }
@@ -51,7 +50,7 @@ public class PhotoItemAdapter extends RecyclerView.Adapter<PhotoItemAdapter.Phot
     public void onBindViewHolder(@NonNull PhotoItemHolder holder, final int position) {
         Photo photo = photoList.get(position);
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, photo.getId(), Toast.LENGTH_LONG).show();
@@ -62,15 +61,20 @@ public class PhotoItemAdapter extends RecyclerView.Adapter<PhotoItemAdapter.Phot
         holder.tvDescription.setText(photo.getDescription());
         Picasso.get()
                 .load(photo.getUrls().getRegular())
-                .resize(300, 300)
+                .resize(256, 256)
                 .centerCrop()
-                .into(holder.imageView);
+                .into(holder.ivPhoto);
+        Picasso.get()
+                .load(photo.getUser().getUrls().getSmall())
+                .resize(64, 64)
+                .centerCrop()
+                .into(holder.ivUser);
     }
 
     public void addPhotos(List<Photo> photos){
         int lastCount = getItemCount();
-        //photoList.addAll(0 ,photos);
-        photoList.addAll(photos);
+        photoList.addAll(0 ,photos);
+        //photoList.addAll(lastCount, photos);
         notifyItemRangeInserted(lastCount, photos.size());
         //notifyItemRangeInserted(0, lastCount);
         Toast.makeText(context, R.string.general_loading_page, Toast.LENGTH_LONG).show();
